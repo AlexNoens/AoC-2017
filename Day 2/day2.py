@@ -7,10 +7,12 @@ string3 = "2 4 6 8"
 
 test_input = [string1.split(" "), string2.split(" "), string3.split(" ")]
 data = [line.split("\t") for line in raw_data.split("\n")]
+
 print(data)
 
 sum = 0
 for row in data:
-    sum += int(max(row)) - int(min(row))
+    int_row = [int(value) for value in row]
+    sum += max(int_row) - min(int_row)
 
 print(sum)
