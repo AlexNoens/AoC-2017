@@ -11,7 +11,7 @@ def part_1():
 
     thing = int(raw_data) - (odd_root) ** 2
 
-    horiz_dist = abs((thing % odd_root) - math.floor(odd_root / 2)) - 1
+    horiz_dist = abs((thing % (odd_root-1)) - math.floor(odd_root / 2))
 
     print("root:", odd_root, "Input", raw_data)
 
@@ -21,15 +21,11 @@ def part_1():
 def part_2():
     print("pt2")
     raw_data = get_data(day=3, year=2017)
-    output = 1
-    pre_out = 0
-    next = 0
-    while output < int(raw_data):
-        next = output + pre_out
-        pre_out = output
-        output = next
-        print(output)
-    print(output)
+    matrix[100][100]
+    matrix[50][50] = 1
+    step = 1
+    while 1:
+        # Start at middle position, build out matrix until value is > than input
 
 
 if __name__ == "__main__":
