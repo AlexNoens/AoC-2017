@@ -17,15 +17,47 @@ def part_1():
 
     print("ans", dist_from_center + horiz_dist, "hd", horiz_dist)
 
+def add_adjacent_values(matrix, x, y):
+    return matrix[x+1][y] + matrix[x][y+1] + matrix[x+1][y+1] + matrix[x-1][y] + matrix[x][y-1] + matrix[x-1][y-1] + matrix[x+1][y-1] + matrix[x-1][y+1]
 
 def part_2():
     print("pt2")
-    raw_data = get_data(day=3, year=2017)
-    matrix[100][100]
-    matrix[50][50] = 1
-    step = 1
+    raw_data = int(get_data(day=3, year=2017))
+    # raw_data = 750
+    matrix = [[0 for i in range(100)]for i in range(100)]
+    x=0
+    y=0
+    matrix[x][y] = 1
+    step = 0
+
     while 1:
-        # Start at middle position, build out matrix until value is > than input
+        step += 1
+        if step % 2 == 0:
+            for i in range(step):
+                x += 1
+                matrix[x][y] = add_adjacent_values(matrix,x,y)
+                if matrix[x][y] > raw_data:
+                    print(matrix[x][y])
+                    exit(0)
+            for i in range(step):
+                y -= 1
+                matrix[x][y] = add_adjacent_values(matrix,x,y)
+                if matrix[x][y] > raw_data:
+                    print(matrix[x][y])
+                    exit(0)
+        else:
+            for i in range(step):
+                x -= 1
+                matrix[x][y] = add_adjacent_values(matrix,x,y)
+                if matrix[x][y] > raw_data:
+                    print(matrix[x][y])
+                    exit(0)
+            for i in range(step):
+                y += 1
+                matrix[x][y] = add_adjacent_values(matrix,x,y)
+                if matrix[x][y] > raw_data:
+                    print(matrix[x][y])
+                    exit(0)
 
 
 if __name__ == "__main__":
